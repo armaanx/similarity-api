@@ -48,10 +48,20 @@ const ReqApiKey: FC<ReqApiKeyProps> = ({ }) => {
         <form onSubmit={createNewApiKey}
             className="mt-6 sm:flex sm:items-center"
             action='#'>
-            <div className="relatice rounded-md shadow-sm sm:min-w-0 sm:flex-1">
-                {apiKey ? (<CopyButton type="button" valueToCopy={apiKey} className=' inset-y-0 right-0 animate-in fade-in duration-300' />) : null}
-                <Input readOnly value={apiKey ?? ''} placeholder="Request an API Key"/>
-            </div>
+            <div className='relative rounded-md shadow-sm sm:min-w-0 sm:flex-1'>
+          {/* Show a copy icon if API key was generated successfully */}
+          {apiKey ? (
+            <CopyButton
+              className='absolute inset-y-0 right-0 animate-in fade-in duration-300'
+              valueToCopy={apiKey}
+            />
+          ) : null}
+          <Input
+            readOnly
+            value={apiKey ?? ''}
+            placeholder='Request an API key to display it here'
+          />
+        </div>
             <div className="mt-3 flex justify-center sm:mt-0 sm:ml-4 sm:flex-shrink-0 ">
                 <Button disabled={!!apiKey} isLoading={isCreating}>Request Key</Button>
             </div>

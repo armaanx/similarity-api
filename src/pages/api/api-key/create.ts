@@ -12,7 +12,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<CreateApiData>)
         const user = await getServerSession(req, res, authOptions).then((res) => res?.user);
         if (!user) {
             return res.status(401).json({
-                error: "Unauthorizes",
+                error: "Unauthorized",
                 createdApiKey: null,
             })
         }
